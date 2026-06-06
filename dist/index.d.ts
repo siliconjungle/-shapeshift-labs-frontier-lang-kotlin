@@ -16,13 +16,13 @@ export declare const KotlinSupportedExtensions: readonly string[];
 
 export interface KotlinLanguagePackageMetadata {
   readonly packageName: '@shapeshift-labs/frontier-lang-kotlin';
-  readonly version: '0.1.1';
+  readonly version: '0.1.3';
   readonly sourceLanguage: 'kotlin';
   readonly parser: 'kotlin-psi';
   readonly parserAstFormat: 'kotlin-psi';
   readonly supportedExtensions: readonly string[];
   readonly compilerPackage: '@shapeshift-labs/frontier-lang-compiler';
-  readonly compilerVersion: '0.2.39';
+  readonly compilerVersion: '0.2.42';
 }
 
 export declare const KotlinLanguagePackage: KotlinLanguagePackageMetadata;

@@ -45,7 +45,7 @@ const ast = {
 const adapter = createKotlinNativeImporterAdapter();
 assert.equal(adapter.language, KotlinSourceLanguage);
 assert.equal(KotlinLanguagePackage.parserAstFormat, KotlinParserAstFormat);
-assert.equal(KotlinLanguagePackage.compilerVersion, '0.2.39');
+assert.equal(KotlinLanguagePackage.compilerVersion, '0.2.42');
 
 const imported = await importKotlinSource({
   sourcePath: 'src/Todo.kt',
