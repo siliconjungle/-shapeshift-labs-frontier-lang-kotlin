@@ -1,6 +1,8 @@
 import {
+  NativeImportLanguageProfiles,
   createKotlinPsiNativeImporterAdapter,
   createSemanticImportSidecar,
+  createUniversalCapabilityMatrix,
   runNativeImporterAdapter
 } from '@shapeshift-labs/frontier-lang-compiler';
 
@@ -11,19 +13,29 @@ export const KotlinSupportedExtensions = Object.freeze(['.kt', '.kts']);
 
 export const KotlinLanguagePackage = Object.freeze({
   packageName: '@shapeshift-labs/frontier-lang-kotlin',
-  version: '0.1.0',
+  version: '0.1.1',
   sourceLanguage: KotlinSourceLanguage,
   parser: KotlinParser,
   parserAstFormat: KotlinParserAstFormat,
   supportedExtensions: KotlinSupportedExtensions,
   compilerPackage: '@shapeshift-labs/frontier-lang-compiler',
-  compilerVersion: '0.2.33'
+  compilerVersion: '0.2.39'
 });
+
+export const KotlinCapabilityLanguageProfiles = Object.freeze(
+  NativeImportLanguageProfiles.filter((profile) => profile.language === KotlinSourceLanguage)
+);
 
 export { createKotlinPsiNativeImporterAdapter } from '@shapeshift-labs/frontier-lang-compiler';
 
 export function createKotlinNativeImporterAdapter(options = {}) {
   return createKotlinPsiNativeImporterAdapter(options);
+}
+
+export function createKotlinLanguageCapabilityMatrix(options = {}) {
+  const languages = options.languages ?? KotlinCapabilityLanguageProfiles;
+  const adapters = options.adapters ?? [createKotlinNativeImporterAdapter(options.importerOptions ?? {})];
+  return createUniversalCapabilityMatrix({ ...options, languages, adapters });
 }
 
 function mergeAdapterOptions(input = {}, options = {}) {

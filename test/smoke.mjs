@@ -4,6 +4,7 @@ import {
   KotlinParserAstFormat,
   KotlinSourceLanguage,
   createKotlinNativeImporterAdapter,
+  createKotlinLanguageCapabilityMatrix,
   importKotlinSource,
   createKotlinSemanticImportSidecar
 } from '../dist/index.js';
@@ -44,7 +45,7 @@ const ast = {
 const adapter = createKotlinNativeImporterAdapter();
 assert.equal(adapter.language, KotlinSourceLanguage);
 assert.equal(KotlinLanguagePackage.parserAstFormat, KotlinParserAstFormat);
-assert.equal(KotlinLanguagePackage.compilerVersion, '0.2.33');
+assert.equal(KotlinLanguagePackage.compilerVersion, '0.2.39');
 
 const imported = await importKotlinSource({
   sourcePath: 'src/Todo.kt',
@@ -68,6 +69,13 @@ assert.equal(imported.semanticIndex.symbols.some((symbol) => symbol.name === 'ad
 assert.equal(imported.losses.some((loss) => loss.kind === 'metaprogramming'), true);
 assert.equal(imported.losses.some((loss) => loss.kind === 'unsupportedSemantic' && loss.metadata?.feature === 'coroutine'), true);
 assert.equal(imported.metadata.nativeImportLossSummary.semanticMergeReadiness, 'needs-review');
+
+const capability = createKotlinLanguageCapabilityMatrix({ imports: [imported], targets: ['typescript', 'rust'] });
+assert.equal(capability.kind, 'frontier.lang.universalCapabilityMatrix');
+assert.equal(capability.languages.length, 1);
+assert.equal(capability.languages[0].language, KotlinSourceLanguage);
+assert.equal(capability.summary.imports, 1);
+assert.equal(capability.summary.targetEntries, 2);
 
 const scriptImport = await importKotlinSource({
   sourcePath: 'scripts/setup.main.kts',

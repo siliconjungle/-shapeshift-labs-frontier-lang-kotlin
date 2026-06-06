@@ -2,8 +2,11 @@ import type {
   KotlinPsiNativeImporterAdapterOptions,
   NativeImporterAdapter,
   NativeImporterAdapterImportResult,
+  NativeImportLanguageProfile,
   SemanticImportSidecar,
-  SemanticImportSidecarOptions
+  SemanticImportSidecarOptions,
+  UniversalCapabilityMatrix,
+  UniversalCapabilityMatrixOptions
 } from '@shapeshift-labs/frontier-lang-compiler';
 
 export declare const KotlinSourceLanguage: 'kotlin';
@@ -13,16 +16,17 @@ export declare const KotlinSupportedExtensions: readonly string[];
 
 export interface KotlinLanguagePackageMetadata {
   readonly packageName: '@shapeshift-labs/frontier-lang-kotlin';
-  readonly version: '0.1.0';
+  readonly version: '0.1.1';
   readonly sourceLanguage: 'kotlin';
   readonly parser: 'kotlin-psi';
   readonly parserAstFormat: 'kotlin-psi';
   readonly supportedExtensions: readonly string[];
   readonly compilerPackage: '@shapeshift-labs/frontier-lang-compiler';
-  readonly compilerVersion: '0.2.33';
+  readonly compilerVersion: '0.2.39';
 }
 
 export declare const KotlinLanguagePackage: KotlinLanguagePackageMetadata;
+export declare const KotlinCapabilityLanguageProfiles: readonly NativeImportLanguageProfile[];
 
 export { createKotlinPsiNativeImporterAdapter } from '@shapeshift-labs/frontier-lang-compiler';
 
@@ -63,6 +67,11 @@ export interface KotlinSemanticImportSidecarOptions extends KotlinSourceImportOp
   readonly regionPrefix?: string;
 }
 
+export interface KotlinLanguageCapabilityMatrixOptions extends UniversalCapabilityMatrixOptions {
+  readonly importerOptions?: KotlinPsiNativeImporterAdapterOptions;
+}
+
 export declare function createKotlinNativeImporterAdapter(options?: KotlinPsiNativeImporterAdapterOptions): NativeImporterAdapter;
+export declare function createKotlinLanguageCapabilityMatrix(options?: KotlinLanguageCapabilityMatrixOptions): UniversalCapabilityMatrix;
 export declare function importKotlinSource(input?: KotlinSourceImportInput, options?: KotlinSourceImportOptions): Promise<NativeImporterAdapterImportResult>;
 export declare function createKotlinSemanticImportSidecar(input?: KotlinSourceImportInput, options?: KotlinSemanticImportSidecarOptions): Promise<SemanticImportSidecar>;
