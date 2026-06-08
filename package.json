@@ -1,6 +1,6 @@
 {
   "name": "@shapeshift-labs/frontier-lang-kotlin",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Kotlin PSI source-language importer package for Frontier Lang semantic source documents.",
   "type": "module",
   "main": "./dist/index.js",
@@ -54,7 +54,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@shapeshift-labs/frontier-lang-compiler": "0.2.64"
+    "@shapeshift-labs/frontier-lang-compiler": "0.2.68"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
