@@ -13,7 +13,7 @@ export const KotlinSupportedExtensions = Object.freeze(['.kt', '.kts']);
 
 export const KotlinLanguagePackage = Object.freeze({
   packageName: '@shapeshift-labs/frontier-lang-kotlin',
-  version: '0.1.7',
+  version: '0.1.8',
   sourceLanguage: KotlinSourceLanguage,
   parser: KotlinParser,
   parserAstFormat: KotlinParserAstFormat,

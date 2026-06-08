@@ -16,7 +16,7 @@ export declare const KotlinSupportedExtensions: readonly string[];
 
 export interface KotlinLanguagePackageMetadata {
   readonly packageName: '@shapeshift-labs/frontier-lang-kotlin';
-  readonly version: '0.1.7';
+  readonly version: '0.1.8';
   readonly sourceLanguage: 'kotlin';
   readonly parser: 'kotlin-psi';
   readonly parserAstFormat: 'kotlin-psi';

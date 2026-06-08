@@ -237,3 +237,5 @@ This package does not bundle Kotlin compiler or IntelliJ dependencies. Callers o
 ```sh
 npm run bench
 ```
+
+These are Frontier-only package measurements for @shapeshift-labs/frontier-lang-kotlin. They exercise only this package's importer wrapper and semantic sidecar helpers without making competitor comparison claims.
